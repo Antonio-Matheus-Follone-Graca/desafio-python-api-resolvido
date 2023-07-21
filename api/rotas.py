@@ -16,7 +16,14 @@ def listagem_despesas():
         rows = g.cursor.fetchall()
         data = []
         for row in rows:
-            data.append(row)
+             data.append({
+                'valor': row[1],
+                'data': row[2],
+                'descricao':row[3],
+                'tipo_pagamento':row[4],
+                'categoria':row[5]
+            })
+
 
     
         resposta= {
@@ -58,3 +65,5 @@ def cadastro_despesas():
         }
         
         return jsonify(resposta)
+
+
